@@ -27,8 +27,10 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // ユーザーが存在する場合
     $row = $result->fetch_assoc();
-    $_SESSION['username'] = $row['name'];
-    header("Location: welcome.php");
+    $_SESSION['loginUser'] = $row['name'];
+    $_SESSION['user_id'] = $row['id'];
+    $_SESSION['group_id'] = $row['group_id'];
+    header("Location: tasks.php");
 } else {
     // ユーザーが存在しない場合
     header("Location: login.php?error=1");
